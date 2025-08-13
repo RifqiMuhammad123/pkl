@@ -314,7 +314,7 @@
                         id="editProfileForm"
                         enctype="multipart/form-data"
                         method="POST"
-                        action="{{ route('admin.updateProfil') }}"
+                        action="{{ route('admin.update.profil') }}"
                       >
                         @csrf
                         <input

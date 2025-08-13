@@ -51,6 +51,6 @@ Route::post('/admin/update-profil', [DashboardController::class, 'updateProfil']
 
 Route::post('/admin/update-profil', [DashboardController::class, 'updateProfil'])->name('admin.update.profil');
 
-// routes/web.php
-Route::post('/admin/update-profil', [AdminController::class, 'updateProfil'])
-    ->name('admin.updateProfil');
+
+Route::get('/admin/barang/tambah', [BarangController::class, 'create'])->name('barang.create');
+Route::post('/admin/barang', [BarangController::class, 'store'])->name('barang.store');

@@ -48,8 +48,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-  // Konfirmasi sebelum simpan
-  document.getElementById('btn-simpan').addEventListener('click', function(e) {
+  document.getElementById('btn-simpan').addEventListener('click', function() {
     Swal.fire({
       title: 'Apakah Anda yakin?',
       text: "Anda akan menyimpan data barang baru!",
@@ -67,7 +66,6 @@
   });
 </script>
 
-<!-- Notifikasi sukses -->
 @if(session('success'))
   <script>
     Swal.fire({
@@ -79,5 +77,4 @@
     });
   </script>
 @endif
-
 @endsection

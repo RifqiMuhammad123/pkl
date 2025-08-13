@@ -12,13 +12,11 @@ class BarangController extends Controller
     /**
      * ✅ Tampilkan Form Tambah Barang
      */
-   public function create()
-{
-    $admin = session('admin'); // atau Auth::user() sesuai implementasi
-    // data lain...
-    return view('dashboard.barang.create', compact('admin', /* lainnya */));
-}
-
+    public function create()
+    {
+        $admin = session('admin'); // Ambil data admin dari session
+        return view('dashboard.barang.create', compact('admin'));
+    }
 
     /**
      * ✅ Simpan Barang ke Database
@@ -47,7 +45,7 @@ class BarangController extends Controller
     }
 
     /**
-     * ✅ Tampilkan Barang Baru (7 Hari Terakhir)
+     * ✅ Barang Baru (7 Hari Terakhir)
      */
     public function barangBaru()
     {
@@ -61,7 +59,7 @@ class BarangController extends Controller
     }
 
     /**
-     * ✅ Tampilkan Semua Stok Barang + Pencarian
+     * ✅ Semua Stok Barang + Pencarian
      */
     public function allStok(Request $request)
     {
@@ -89,7 +87,7 @@ class BarangController extends Controller
     }
 
     /**
-     * ✅ Export Laporan ke PDF
+     * ✅ Export PDF
      */
     public function exportPDF()
     {
