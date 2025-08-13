@@ -36,6 +36,7 @@
        <i class="fas fa-chart-line"></i> Dashboard
     </a>
 
+<<<<<<< HEAD
 <!-- ✅ Menu Barang -->
 <div class="menu-item has-submenu {{ request()->is('admin/barang*') ? 'active' : '' }}">
   <a href="#" class="menu-toggle">
@@ -46,6 +47,39 @@
     <a href="{{ route('barang.create') }}" class="{{ request()->routeIs('barang.create') ? 'active' : '' }}">Tambah Barang</a>
     <a href="{{ route('barang.baru') }}" class="{{ request()->routeIs('barang.baru') ? 'active' : '' }}">Barang Baru</a>
     <a href="{{ route('barang.stok') }}" class="{{ request()->routeIs('barang.stok') ? 'active' : '' }}">All Stok</a>
+=======
+    <!-- Menu Barang -->
+  <!-- ✅ Menu Barang -->
+      <div class="menu-item has-submenu {{ request()->is('admin/barang*') ? 'active' : '' }}">
+        <a href="#" class="menu-toggle">
+          <i class="fas fa-box"></i> Barang
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <div class="submenu">
+          <a href="{{ route('barang.create') }}" class="{{ request()->routeIs('barang.create') ? 'active' : '' }}">Tambah Barang</a>
+          <a href="{{ route('barang.baru') }}" class="{{ request()->routeIs('barang.baru') ? 'active' : '' }}">Barang Baru</a>
+          <a href="{{ route('barang.stok') }}" class="{{ request()->routeIs('barang.stok') ? 'active' : '' }}">All Stok</a>
+        </div>
+      </div>
+
+    <!-- Menu Permintaan -->
+    <div class="menu-item has-submenu {{ request()->is('admin/permintaan*') ? 'active' : '' }}">
+      <a href="#" class="menu-toggle">
+        <i class="fas fa-clipboard-list"></i> Permintaan
+        <i class="fas fa-chevron-down submenu-icon"></i>
+      </a>
+      <div class="submenu">
+        {{-- Hanya link untuk lihat daftar permintaan --}}
+        <a href="{{ route('permintaan.index') }}" class="{{ request()->routeIs('permintaan.index') ? 'active' : '' }}">
+          Daftar Permintaan
+        </a>
+      </div>
+    </div>
+
+    <!-- Logout -->
+    <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <form id="logoutForm" action="{{ route('logout') }}" method="GET" style="display: none;"></form>
+>>>>>>> 7811077698b1cb4b744210f304766d2f5c716f64
   </div>
 </div>
 
@@ -63,4 +97,55 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 
+=======
+  <!-- ✅ Sidebar & Submenu Toggle -->
+  <script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        const parent = this.closest('.has-submenu');
+        if (parent) {
+          e.preventDefault();
+          parent.classList.toggle('active');
+        }
+      });
+    });
+
+    // ✅ Logout SweetAlert
+    document.getElementById('logoutButton')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      Swal.fire({
+        title: 'Yakin mau logout?',
+        text: "Anda akan keluar dari sistem!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Logout!',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById('logoutForm').submit();
+        }
+      });
+    });
+  </script>
+
+  @if(session('success'))
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: "{{ session('success') }}",
+        confirmButtonColor: '#3085d6'
+      });
+    });
+  </script>
+  @endif
+  
+
+</body>
+</html>
+>>>>>>> 7811077698b1cb4b744210f304766d2f5c716f64

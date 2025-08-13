@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PermintaanController; // PENTING: jangan lupa import ini
+// Jika kamu pakai AdminController untuk update profil, import juga di sini:
+// use App\Http\Controllers\AdminController;
 
 // ==========================
 // AUTH
@@ -36,11 +39,29 @@ Route::get('/admin/barang/tambah', [BarangController::class, 'create'])->name('b
 Route::post('/admin/barang', [BarangController::class, 'store'])->name('barang.store');
 Route::get('/admin/barang/baru', [BarangController::class, 'barangBaru'])->name('barang.baru');
 Route::get('/admin/barang/stok', [BarangController::class, 'allStok'])->name('barang.stok');
+Route::delete('/admin/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+Route::get('/admin/barang/export/pdf', [BarangController::class, 'exportPDF'])->name('barang.export.pdf');
+
+// ==========================
+// UPDATE PROFIL ADMIN
+// ==========================
+// ** HANYA SATU ROUTE untuk update profil **
+// Pakai DashboardController (sesuaikan jika kamu pakai AdminController)
+Route::post('/admin/update-profil', [DashboardController::class, 'updateProfil'])->name('admin.update.profil');
+
+// ==========================
+// PERMINTAAN MANAGEMENT
+// ==========================
+Route::get('/permintaan', [PermintaanController::class, 'index'])->name('permintaan.index');
+Route::get('/permintaan/create', [PermintaanController::class, 'create'])->name('permintaan.create');
+Route::post('/permintaan', [PermintaanController::class, 'store'])->name('permintaan.store');
+Route::get('/permintaan/{id}/status', [PermintaanController::class, 'status'])->name('permintaan.status');
 
 // ==========================
 // DEFAULT REDIRECT /admin
 // ==========================
 Route::redirect('/admin', '/dashboard/admin')->name('dashboard');
+<<<<<<< HEAD
 Route::delete('/admin/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 Route::get('/admin/barang/export/pdf', [BarangController::class, 'exportPDF'])->name('barang.export.pdf');
 
@@ -54,3 +75,5 @@ Route::post('/admin/update-profil', [DashboardController::class, 'updateProfil']
 
 Route::get('/admin/barang/tambah', [BarangController::class, 'create'])->name('barang.create');
 Route::post('/admin/barang', [BarangController::class, 'store'])->name('barang.store');
+=======
+>>>>>>> 7811077698b1cb4b744210f304766d2f5c716f64
